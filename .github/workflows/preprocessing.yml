@@ -5,6 +5,9 @@ on:
     branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   preprocessing:
     runs-on: ubuntu-latest
@@ -27,6 +30,6 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-          git add preprocessing/credit_scoring_preprocessing -f
+          git add preprocessing/breast_cancer_preprocessing -f
           git diff --staged --quiet || git commit -m "Auto: update preprocessed dataset"
           git push
